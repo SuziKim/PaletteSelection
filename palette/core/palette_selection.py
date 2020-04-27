@@ -48,7 +48,7 @@ class PaletteSelection:
         return self._palette_colors
 
     def _compute(self):
-        for i in xrange(self._num_colors):
+        for i in range(self._num_colors):
             palette_coordinate = self._updatePalette()
             self._updateWeight(palette_coordinate)
 

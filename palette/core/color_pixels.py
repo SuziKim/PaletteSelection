@@ -17,10 +17,8 @@ from palette.cv.image import to32F, rgb2Lab, rgb2hsv, gray2rgb
 class ColorPixels:
     ## Constructor
     #  @param image          input image.
-    #  @param num_pixels     target number of pixels from the image.
-    def __init__(self, image, num_pixels=1000):
+    def __init__(self, image):
         self._image = to32F(image)
-        self._num_pixels = num_pixels
         self._rgb_pixels = None
         self._Lab = None
         self._hsv = None
@@ -60,12 +58,10 @@ class ColorPixels:
     def _image2pixels(self, image):
         if _isGray(image):
             h, w = image.shape
-            step = h * w / self._num_pixels
-            return image.reshape((h * w))[::step]
+            return image.reshape((h * w))
 
         h, w, cs = image.shape
-        step = h * w / self._num_pixels
-        return image.reshape((-1, cs))[::step]
+        return image.reshape((-1, cs))
 
 
 def _isGray(image):
